@@ -12,7 +12,7 @@ export class UserController {
   async getUsers(): Promise<User[]> {
     return this.appService.findUsers();
   }
-  @Get(":id") //wrong, gotta fix
+  @Get(":id")
   async getUserById(id : string): Promise<User> {
     return this.appService.findUserById(id);
   }
