@@ -1,9 +1,20 @@
-class CreateUserDto {
-  name: string;
-
-  age: number;
-
-  email: string;
+class Adress {
+  zipcode: number
+  street: string
 }
 
-export { CreateUserDto };
+class CreateUserDto {
+  name: string;
+  age: number;
+  email: string;
+  adress: Adress;
+}
+
+class UpdateUserDto {
+  name: string;
+  age: number;
+  email: string;
+  adress: Adress;
+}
+
+export { CreateUserDto, UpdateUserDto };

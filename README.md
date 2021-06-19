@@ -58,7 +58,7 @@
 Using Docker [Mongo Link for more information](https://hub.docker.com/_/mongo)
 
     docker pull mongo
-    docker run -dp 27017:27017 --name banco_mongo
+    docker run -dp 27017:27017 --name banco_mongo mongo
 Using Local Mongo:
     [MongoDB Download Link](https://www.mongodb.com/try/download/community)
 

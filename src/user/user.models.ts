@@ -3,6 +3,14 @@ import { Document } from 'mongoose';
 
 export type UserDocument = User & Document;
 
+class Adress {
+  @Prop()
+  zipcode: number
+
+  @Prop()
+  street: string
+}
+
 @Schema()
 export class User {
   @Prop()
@@ -13,6 +21,10 @@ export class User {
 
   @Prop({ unique: true })
   email: string;
+
+  @Prop()
+  adress: Adress
+
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
