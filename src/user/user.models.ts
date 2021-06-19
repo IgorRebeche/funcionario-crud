@@ -13,6 +13,7 @@ class Adress {
 
 @Schema()
 export class User {
+
   @Prop()
   name: string;
 
@@ -25,6 +26,8 @@ export class User {
   @Prop()
   adress: Adress
 
+  @Prop()
+  cpf: string;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

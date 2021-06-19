@@ -8,6 +8,7 @@ class CreateUserDto {
   age: number;
   email: string;
   adress: Adress;
+  cpf: string;
 }
 
 class UpdateUserDto {
