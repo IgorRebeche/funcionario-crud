@@ -9,8 +9,12 @@ export class UserController {
   constructor(private readonly appService: UserService) {}
 
   @Get()
-  getUsers(): Promise<User[]> {
-    return this.appService.findAll();
+  async getUsers(): Promise<User[]> {
+    return this.appService.findUsers();
+  }
+  @Get(":id")
+  async getUserById(id : string): Promise<User> {
+    return this.appService.findUserById(id);
   }
 
   @Post()
