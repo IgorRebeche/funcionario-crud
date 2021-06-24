@@ -74,7 +74,7 @@ export default {
         .then((data) => (this.users = data.data));
     },
     deleteUser(id) {
-      axios.delete(`${server.baseURL}/user${id}`).then((data) => {
+      axios.delete(`${server.baseURL}/user/${id}`).then((data) => {
         console.log(data);
         window.location.reload();
       });

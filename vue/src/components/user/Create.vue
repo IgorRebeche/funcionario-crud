@@ -62,12 +62,6 @@
             placeholder="Enter address"
           />
         </div>
-
-        <!-- <div class="form-group col-md-12">
-              <label for="description"> Description </label>
-              <input type="text" id="description" v-model="description" name="description" class="form-control" placeholder="Enter Description">
-            </div> -->
-
         <div class="form-group col-md-4 pull-right">
           <button class="btn btn-success" type="submit">Create User</button>
         </div>

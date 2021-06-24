@@ -30,13 +30,19 @@ export class UserController {
     return this.userService.create(createUserDto);
   }
 
-  @Put(':id')
+  @Put("/update")
   @UseFilters(MongoExceptionFilter, HttpExceptionFilter)
-  async updateUser(@Param('id') id: string, @Body() body: UpdateUserDto): Promise<User> {
-    return this.userService.updateUserById(id, body);
+  async updateUser(@Res() res, @Query('id') id, @Body() body: UpdateUserDto): Promise<User> {
+    const user = await this.userService.updateUserById(id, body);
+    if (!user) throw new NotFoundException("User does not exist!");
+    return res.status(HttpStatus.OK).json({
+      message: "User has been successfully updated",
+      user
+    });
+    // return this.userService.updateUserById(id, body);
   }
 
-  @Delete(':id')
+  @Delete(":id")
   @UseFilters(MongoExceptionFilter, HttpExceptionFilter)
   async deleteUser(@Param('id') id: string)
   {

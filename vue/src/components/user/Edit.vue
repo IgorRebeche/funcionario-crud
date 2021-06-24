@@ -35,7 +35,7 @@
           />
         </div>
 
-        <div class="form-group col-md-12">
+        <!-- <div class="form-group col-md-12">
           <label for="title"> cpf </label>
           <input
             type="text"
@@ -45,7 +45,7 @@
             class="form-control"
             placeholder="Enter cpf"
           />
-        </div>
+        </div> -->
 
         <div class="form-group col-md-12">
           <label for="title"> Email </label>
@@ -95,23 +95,20 @@ export default {
   },
   methods: {
     editUser() {
-      let userData = {
-        name: this.name,
-        age: this.age,
-        cpf: this.cpf,
-        email: this.email,
-        address: this.address,
+      let data = {
+        name: this.user.name,
+        age: this.user.age,
+        // cpf: this.user.cpf,
+        email: this.user.email,
+        address: this.user.address,
       };
-      this.__submitToServer(userData);
-    },
-    __submitToServer(data) {
-      axios.put(`${server.baseURL}/user${this.id}`, data).then((/*data*/) => {
+      axios.put(`${server.baseURL}/user/update?id=${this.id}`, data).then((/*data*/) => {
         router.push({ name: 'home' });
       });
     },
     getUser() {
       axios
-        .get(`${server.baseURL}/user${this.id}`)
+        .get(`${server.baseURL}/user/${this.id}`)
         .then((data) => (this.user = data.data));
     },
     navigate() {
