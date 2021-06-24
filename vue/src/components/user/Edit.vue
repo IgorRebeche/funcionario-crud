@@ -35,7 +35,7 @@
           />
         </div>
 
-        <!-- <div class="form-group col-md-12">
+        <div class="form-group col-md-12">
           <label for="title"> cpf </label>
           <input
             type="text"
@@ -45,7 +45,7 @@
             class="form-control"
             placeholder="Enter cpf"
           />
-        </div> -->
+        </div>
 
         <div class="form-group col-md-12">
           <label for="title"> Email </label>
