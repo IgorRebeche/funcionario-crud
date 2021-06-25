@@ -4,10 +4,10 @@
 
 
 ## Application Structure
-### Employee CRUD
+### User CRUD
 
 #### Create
-- Endpoint: `/employee`
+- Endpoint: `/user`
 
 - Content-type: `application/json`
 
@@ -29,7 +29,7 @@
 ```
 
 #### Update
-- Endpoint: `/employee/{id}`
+- Endpoint: `/user/{id}`
 
 - Content-type: `application/json`
 
@@ -50,7 +50,7 @@
 
 ```
 #### Delete
-- Endpoint: `/employee/{id}`
+- Endpoint: `/user/{id}`
 
 - Method: `DELETE`
 

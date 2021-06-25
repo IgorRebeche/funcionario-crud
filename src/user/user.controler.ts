@@ -4,6 +4,7 @@ import { UserService } from 'src/user/user.service';
 import { CreateUserDto, UpdateUserDto } from 'src/user/user.dto';
 import { MongoExceptionFilter } from 'src/filters/mongo-exception.filter';
 import { Param } from '@nestjs/common';
+import { HttpStatus, NotFoundException, Res } from '@nestjs/common';
 import { HttpExceptionFilter } from 'src/filters/http-exception.filter';
 
 @Controller("/user")
@@ -11,13 +12,19 @@ export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Get()
-  async getUsers(): Promise<User[]> {
-    return this.userService.findUsers();
+  async getUsers(@Res() res): Promise<User[]> {
+    const users = await this.userService.findUsers();
+    
+    return res.status(HttpStatus.OK).json(users);
   }
   @Get(":id")
   @UseFilters(MongoExceptionFilter, HttpExceptionFilter)
-  async getUserById(@Param('id') id : string): Promise<User> {
-    return this.userService.findUserById(id);
+  async getUserById(@Res() res, @Param('id') id : string): Promise<User> {
+    const user = await this.userService.findUserById(id);
+    
+    if (!user) throw new NotFoundException('User does not exist!');
+    
+    return res.status(HttpStatus.OK).json(user);
   }
 
   @Post()
@@ -26,13 +33,21 @@ export class UserController {
     return this.userService.create(createUserDto);
   }
 
-  @Put(':id')
+  @Put(":id")
   @UseFilters(MongoExceptionFilter, HttpExceptionFilter)
-  async updateUser(@Param('id') id: string, @Body() body: UpdateUserDto): Promise<User> {
-    return this.userService.updateUserById(id, body);
+  async updateUser(@Res() res, @Param('id') id, @Body() body: UpdateUserDto): Promise<User> {
+    const user = await this.userService.updateUserById(id, body);
+    
+    if (!user) throw new NotFoundException("User does not exist!");
+    
+    return res.status(HttpStatus.OK).json({
+      message: "User has been successfully updated",
+      user
+    });
+    // return this.userService.updateUserById(id, body);
   }
 
-  @Delete(':id')
+  @Delete(":id")
   @UseFilters(MongoExceptionFilter, HttpExceptionFilter)
   async deleteUser(@Param('id') id: string)
   {

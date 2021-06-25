@@ -3,7 +3,7 @@ import { Document } from 'mongoose';
 
 export type UserDocument = User & Document;
 
-class Adress {
+class Address {
   @Prop()
   zipcode: number
 
@@ -24,7 +24,7 @@ export class User {
   email: string;
 
   @Prop()
-  adress: Adress
+  address: Address;
 
   @Prop()
   cpf: string;
