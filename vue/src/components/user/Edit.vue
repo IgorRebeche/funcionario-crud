@@ -64,7 +64,7 @@
           <input
             type="text"
             id="address"
-            v-model="user.address"
+            v-model="user.address.street"
             name="title"
             class="form-control"
             placeholder="Enter address"
@@ -100,7 +100,9 @@ export default {
         age: this.user.age,
         // cpf: this.user.cpf,
         email: this.user.email,
-        address: this.user.address,
+        address: {
+          street: this.user.address.street
+        },
       };
       axios.put(`${server.baseURL}/user/${this.id}`, data).then((/*data*/) => {
         router.push({ name: 'home' });

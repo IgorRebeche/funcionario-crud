@@ -28,7 +28,7 @@
             <td>{{ user.age }}</td>
             <td>{{ user.cpf }}</td>
             <td>{{ user.email }}</td>
-            <td>{{ user.address }}</td>
+            <td>{{ user.address ? user.address.street : '' }}</td>
             <td>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group" style="margin-bottom: 20px">
@@ -71,7 +71,10 @@ export default {
     fetchUsers() {
       axios
         .get(`${server.baseURL}/user`)
-        .then((data) => (this.users = data.data));
+        .then((data) => {
+          console.log(data)
+          (this.users = data.data)
+        });
     },
     deleteUser(id) {
       axios.delete(`${server.baseURL}/user/${id}`).then((data) => {
