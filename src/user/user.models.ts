@@ -3,13 +3,13 @@ import { Document } from 'mongoose';
 
 export type UserDocument = User & Document;
 
-// class Address {
-//   @Prop()
-//   zipcode: number
+class Address {
+  @Prop()
+  zipcode: number
 
-//   @Prop()
-//   street: string
-// }
+  @Prop()
+  street: string
+}
 
 @Schema()
 export class User {
@@ -24,7 +24,7 @@ export class User {
   email: string;
 
   @Prop()
-  address: string;
+  address: Address;
 
   @Prop()
   cpf: string;

@@ -102,7 +102,7 @@ export default {
         email: this.user.email,
         address: this.user.address,
       };
-      axios.put(`${server.baseURL}/user/update?id=${this.id}`, data).then((/*data*/) => {
+      axios.put(`${server.baseURL}/user/${this.id}`, data).then((/*data*/) => {
         router.push({ name: 'home' });
       });
     },
