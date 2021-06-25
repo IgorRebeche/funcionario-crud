@@ -45,8 +45,7 @@ export class UserService {
     const user = await this.userModel.findById(id)
     if (!user)
       throw new HttpException('Usuario não encontrado', HttpStatus.NOT_FOUND);
-
-    this.logger.log(user)
+      
     await this.userModel.findByIdAndUpdate({ _id: id }, updateUserDto).exec();
 
     return this.userModel.findById(id).exec();

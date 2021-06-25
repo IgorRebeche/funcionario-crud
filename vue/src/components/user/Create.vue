@@ -91,7 +91,10 @@ export default {
         age: this.age,
         cpf: this.cpf,
         email: this.email,
-        address: this.address,
+        address: 
+        {
+          street: this.address
+        }
       };
       this.__submitToServer(userData);
     },
